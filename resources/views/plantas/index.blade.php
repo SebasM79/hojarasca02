@@ -28,13 +28,15 @@
                     <td>{{ $planta->activo ? 'Sí' : 'No' }}</td>
                     <td>{{ $planta->email }}</td>
                     <td>{{ $planta->producto->nombre }}</td>
+                    <td>{{ $planta->producto ? $planta->producto->nombre : 'Sin producto asignado' }}</td>
+
                     <td>
-                        <a href="{{ route('empleados.show', $planta) }}" class="btn btn-info">Ver</a>
-                        <a href="{{ route('empleados.edit', $planta) }}" class="btn btn-warning">Editar</a>
-                        <form action="{{ route('empleados.destroy', $planta) }}" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de eliminar este cargo?');">
+                        <a href="{{ route('plantas.show', $planta) }}" class="btn btn-info">Ver</a>
+                        <a href="{{ route('plantas.edit', $planta) }}" class="btn btn-warning">Editar</a>
+                        <form action="{{ route('plantas.destroy', $planta) }}" method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar este Producto</button>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>

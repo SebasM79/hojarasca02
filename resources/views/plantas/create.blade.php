@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Crear Empleado</h1>
+    <h1>Crear Plantas</h1>
     <form action="{{ route('plantas.store') }}" method="POST">
         @csrf
         <div class="form-group">
