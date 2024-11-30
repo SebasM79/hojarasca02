@@ -27,8 +27,10 @@
                     <td>{{ $planta->importe }}</td>
                     <td>{{ $planta->activo ? 'Sí' : 'No' }}</td>
                     <td>{{ $planta->email }}</td>
-                    <td>{{ $planta->producto->nombre }}</td>
+                  
                     <td>{{ $planta->producto ? $planta->producto->nombre : 'Sin producto asignado' }}</td>
+
+                  
 
                     <td>
                         <a href="{{ route('plantas.show', $planta) }}" class="btn btn-info">Ver</a>

@@ -19,9 +19,10 @@ return new class extends Migration
             $table->integer('importe');
             $table->boolean('activo');
             $table->string('email');
-            $table->unsignedBigInteger('producto_id'); // Declaración del campo para la relación
-            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade'); // Relación foránea
+            $table->foreignId('producto_id')->constrained()->onDelete('cascade');
+            // Relación foránea
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
     }
 

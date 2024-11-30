@@ -41,9 +41,9 @@ class PlantasController extends Controller
             'producto_id' => 'required|exists:productos,id'
         ]);
 
-        $planta = Plantas::create($request->all()); //solicita todo de la peticion de la tabla Plantas
+        $plantas = Plantas::create($request->all()); //solicita todo de la peticion de la tabla Plantas
 
-        return view('plantas.index', compact('planta'));
+        return view('plantas.index', compact('plantas'));
     }
 
     /**
