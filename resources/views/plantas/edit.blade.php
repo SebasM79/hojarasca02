@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="form-control" value="{{ $empleado->email }}">
+            <input type="email" name="email" id="email" class="form-control" value="{{ $planta->email }}">
         </div>
         <div class="form-group">
             <label for="cargo_id">Producto</label>

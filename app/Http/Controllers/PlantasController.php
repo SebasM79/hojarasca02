@@ -13,9 +13,10 @@ class PlantasController extends Controller
      */
     public function index()
     {
-        $plantas = Plantas::all();
+        $plantas = Plantas::paginate(10); // Cambia '10' por el número de elementos que desees por página.
         return view('plantas.index', compact('plantas'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,9 +42,8 @@ class PlantasController extends Controller
             'producto_id' => 'required|exists:productos,id'
         ]);
 
-        $plantas = Plantas::create($request->all()); //solicita todo de la peticion de la tabla Plantas
-
-        return view('plantas.index', compact('plantas'));
+        Plantas::create($request->all());
+        return redirect()->route('plantas.index')->with('success', 'Planta creada correctamente.');
     }
 
     /**
@@ -76,7 +76,7 @@ class PlantasController extends Controller
             'importe' => 'required|integer',
             'activo' => 'required|boolean',
             'email' => 'required|email',
-            'productos_id' => 'required|exists:productos,id'
+            'producto_id' => 'required|exists:productos,id'
         ]);
 
         $planta->update($request->all());
@@ -89,11 +89,9 @@ class PlantasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Plantas $plantas)
+    public function destroy(Plantas $planta)
     {
-
-        $plantas->delete();
-
-        return redirect()->route('plantas.index')->with('success', 'la planta fue eliminada correctamente');
+        $planta->delete();
+        return redirect()->route('plantas.index')->with('success', 'La planta fue eliminada correctamente');
     }
 }

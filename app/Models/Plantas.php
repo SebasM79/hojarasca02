@@ -16,6 +16,6 @@ class Plantas extends Model
     public function Productos()
 
     {
-        return $this->belongsTo(Productos::class); // una planta pertenece a un producto planta
+        return $this->belongsTo(Productos::class, 'producto_id'); // una planta pertenece a un producto planta
     }
 }

@@ -4,7 +4,8 @@
 @section('content')
     <h1>Productos</h1>
     <a href="{{ route('productos.create') }}" class="btn btn-primary mb-2">Crear Producto</a>
-    <table class="table">
+    <table class="table table-striped table-hover">
+
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -21,7 +22,7 @@
                         <!-- <form action="{{ route('productos.destroy', $producto) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar este Producto</button>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form> -->
                     </td>
                 </tr>
@@ -29,3 +30,6 @@
         </tbody>
     </table>
 @endsection
+<div class="d-flex justify-content-center">
+    {{ $productos->links() }}
+</div>

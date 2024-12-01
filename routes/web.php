@@ -12,3 +12,4 @@ Route::get('/', function () {
 
 Route::resource('plantas', PlantasController::class)->names('plantas');
 Route::resource('productos', ProductosController::class)->names('productos');
+Route::put('/productos/{producto}', [ProductosController::class, 'update'])->name('productos.update');

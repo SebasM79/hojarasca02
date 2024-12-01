@@ -12,7 +12,7 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos = Productos::all();
+        $productos = Productos::paginate(10); // Cambia '10' por el número de elementos por página que desees.
         return view('productos.index', compact('productos'));
     }
 
@@ -49,20 +49,23 @@ class ProductosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Productos $productos)
+    public function edit(Productos $producto)
     {
-        return view('productos.edit', compact('productos'));
+        return view('productos.edit', compact('producto'));
     }
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Productos $productos)
+    public function update(Request $request, Productos $producto)
     {
+
         $request->validate([
             'nombre' => 'required'
         ]);
 
-        $productos->update($request->all());
+
+        $producto->update($request->only('nombre'));
+
 
         return redirect()->route('productos.index')->with('success', 'el producto se ha actualizado de forma correcta');
     }
@@ -70,8 +73,11 @@ class ProductosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Productos $productos)
+    public function destroy(Productos $producto)
     {
-        //
+
+        $producto->delete();
+
+        return redirect()->route('productos.index')->with('success', 'El producto se eliminado correctamente');
     }
 }
